@@ -17,4 +17,5 @@ Para evitar bucles infinitos debe haber una forma de "detención":
 x=1
 while x <= 5:
     print(x)
-    x += 1  # <----- Cabe mencionar que si no se considera esta linea de código, se ejecuta permanentemente
+    x += 1  # <----- Cabe mencionar que si no se considera esta linea de código, se ejecuta permanentemente.
+    
