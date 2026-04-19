@@ -50,4 +50,29 @@ class Usuario:
 us1= Usuario("Cristobal","Contreras")
 us1.saludar_usuario()
 us1.describir_usuario()
-        
+
+class CuentaBancaria:
+    def __init__(self, titular, saldo_inicial):
+        self.titular = titular
+        self.saldo = saldo_inicial
+
+    def depositar(self, cantidad):
+        self.saldo += cantidad
+        return f"Depósito exitoso. Nuevo saldo: ${self.saldo}"
+
+    def retirar(self, cantidad):
+        if cantidad <= self.saldo:
+            self.saldo -= cantidad
+            return f"Retiro exitoso. Saldo restante: ${self.saldo}"
+        else:
+            return "Fondos insuficientes."
+
+# --- Uso de la clase ---
+
+# Creamos la cuenta de "Ana" con 100 dólares
+mi_cuenta = CuentaBancaria("Ana", 100)
+
+print(mi_cuenta.depositar(50))  # Salida: Nuevo saldo: $150
+print(mi_cuenta.retirar(30))    # Salida: Saldo restante: $120
+print(mi_cuenta.retirar(200))   # Salida: Fondos insuficientes.
+
