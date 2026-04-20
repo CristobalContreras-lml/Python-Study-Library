@@ -76,3 +76,23 @@ print(mi_cuenta.depositar(50))  # Salida: Nuevo saldo: $150
 print(mi_cuenta.retirar(30))    # Salida: Saldo restante: $120
 print(mi_cuenta.retirar(200))   # Salida: Fondos insuficientes.
 
+
+
+
+class Administrador(Usuario):
+    """ Un tipo en especial de usuario con privilegios"""
+    
+    def __init__(self, nombre, apellido):
+        super().__init__(nombre, apellido)
+        self.privilegios = ["Puede borrar post", "Puede borrar Usuarios", "Puede modificar archivos"]
+    
+    def mostrar_privilegios(self):
+        """Muestra lo que el Admin es capaz de hacer"""
+        print(f"El administrador {self.nombre} tiene los siguientes permisos:\n")
+        for permiso in self.privilegios:
+            print(f"- {permiso}")
+            
+admin_01= Administrador("Cristobal", "Admin")   
+admin_01.saludar_usuario()
+admin_01.mostrar_privilegios()        
+    
