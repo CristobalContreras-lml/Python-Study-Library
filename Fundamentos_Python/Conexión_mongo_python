@@ -1,0 +1,30 @@
+from pymongo import MongoClient
+
+# Conexión
+client = MongoClient("mongodb://localhost:27017/")
+db = client["empresax"]
+collection = db["trabajadores"]
+
+# 1. ¿Cuántos documentos hay en total en la colección?
+total = collection.count_documents({})
+print(f"Total de trabajadores en la colección: {total}")
+
+# 2. Intentemos una búsqueda más amplia (sin filtros complicados)
+print("Intentando buscar cualquier documento...")
+ejemplo = collection.find_one()
+print(f"Un ejemplo de documento en la colección: {ejemplo}")
+
+# 3. Tu consulta original
+resultado = collection.find(
+    {"compras.monto": 0}, 
+    {"_id": 0, "nombre": 1}
+)
+
+# Convertimos a lista para ver si tiene elementos
+lista_resultados = list(resultado)
+print(f"Cantidad de documentos encontrados con tu filtro: {len(lista_resultados)}")
+
+for doc in lista_resultados:
+    print(doc)
+
+client.close()
